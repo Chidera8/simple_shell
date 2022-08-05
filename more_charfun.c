@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * _strcmp - Compare Two String
+ * _strcmp - Comparing Two String
  * @s1:String 1
  * @s2:String 2
  * Return: 0 If Identical Otherwise How Much Diffrent
