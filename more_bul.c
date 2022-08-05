@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * history_dis - Display History Of User Input Simple Shell
+ * history_dis - Display History of User Input Simple Shell
  * @c:Parsed Command
  * @s:Statue Of Last Excute
  * Return: 0 Succes -1 Fail
