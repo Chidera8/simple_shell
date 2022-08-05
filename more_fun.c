@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * _strcpy - Copie Source To Destination Char
+ * _strcpy - Copie Source To destination Char
  * @dest:Destination
  * @src:Source
  * Return: Copie Of Char *
