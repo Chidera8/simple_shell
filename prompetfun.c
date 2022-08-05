@@ -8,7 +8,7 @@ void prompt(void)
 	PRINTER("$ ");
 }
 /**
- * print_error - Display Error Based on Command and How Many Time Shell Looped
+ * print_error - Display Error based on Command and How Many Time Shell Looped
  * @input:User Input
  * @counter:Simple Shell Count Loop
  * @argv:Program Name
