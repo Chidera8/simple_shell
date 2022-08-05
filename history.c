@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * history - Fill File By User Input
+ * history - Fill file By User Input
  * @input: User Input
  * Return: -1 Fail 0 Succes
  */
