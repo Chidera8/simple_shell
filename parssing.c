@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * parse_cmd - Parse Line Of Input
+ * parse_cmd - Parse line Of Input
  * @input:User Input To Parse
  * Return: Array Of Char (Parsed):Simple Shell
  */
