@@ -1,5 +1,5 @@
 echo: echo [-neE] [arg ...]
-    Write arguments to the standard output.
+    Writing arguments to the standard output.
 
     Display the ARGs, separated by a single space character and followed by a
     newline, on the standard output.
