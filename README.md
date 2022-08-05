@@ -1,6 +1,6 @@
 # Simple Shell
 
-### Introduction
+### introduction
 This is a project by ALX to test our understanding of navigating simple shell commands.
 
 #### Learning Objectives
