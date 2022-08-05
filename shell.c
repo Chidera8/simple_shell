@@ -2,7 +2,7 @@
 
 /**
  * main - Simple Shell (Hsh)
- * @argc: Argument Count
+ * @argc: Argument count
  * @argv:Argument Value
  * Return: Exit Value By Status
  */
