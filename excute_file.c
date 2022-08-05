@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * read_file - Read Command From File
+ * read_file - Reading Command From File
  * @filename:Filename
  * @argv:Program Name
  * Return: -1 or  0
