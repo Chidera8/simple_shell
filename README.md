@@ -8,28 +8,28 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 
 #### General
 <ul>
-Who designed and implemented the original Unix operating system
-Who wrote the first version of the UNIX shell
-Who invented the B programming language (the direct predecessor to the C programming language)
-Who is Ken Thompson
-How does a shell work
-What is a pid and a ppid
-How to manipulate the environment of the current process
-What is the difference between a function and a system call
-How to create processes
-What are the three prototypes of main
-How does the shell use the PATH to find the programs
-How to execute another program with the execve system call
-How to suspend the execution of a process until one of its children terminates
-What is EOF / “end-of-file”?
+<li>Who designed and implemented the original Unix operating system
+<li>Who wrote the first version of the UNIX shell
+<li>Who invented the B programming language (the direct predecessor to the C programming language)
+<li>Who is Ken Thompson
+<li>How does a shell work
+<li>What is a pid and a ppid
+<li>How to manipulate the environment of the current process
+<li>What is the difference between a function and a system call
+<li>How to create processes
+<li>What are the three prototypes of main
+<li>How does the shell use the PATH to find the programs
+<li>How to execute another program with the execve system call
+<li>How to suspend the execution of a process until one of its children terminates
+<li>What is EOF / “end-of-file”?
 </ul>
 #### Solutions
 
 <ol>
-* AUTHORS
-* _strtok.c
-* bulltin.c
-* cd
+AUTHORS
+_strtok.c </li>
+bulltin.c
+cd
 * char_fun.c
 * echo
 * excute.c
