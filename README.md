@@ -26,7 +26,7 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 
 #### Solutions
 <ol>
-<li>[AUTHORS] (https://github.com/Chidera8/simple_shell/blob/main/AUTHORS)</li>
+<li> AUTHORS [AUTHORS](https://github.com/Chidera8/simple_shell/blob/main/AUTHORS)</li>
 <li>[_strtok.c] (https://github.com/Chidera8/simple_shell/blob/main/_strtok.c)</li>
 <li>[bulltin.c] (https://github.com/Chidera8/simple_shell/blob/main/bulltin.c)</li>
 <li>[cd] (https://github.com/Chidera8/simple_shell/blob/main/cd)</li>
