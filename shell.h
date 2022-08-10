@@ -1,86 +1,114 @@
 #ifndef SHELL_H
 #define SHELL_H
-#define _XOPEN_SOURCE 700
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <string.h>
+
+/* header files */
 #include <stdio.h>
 #include <stdlib.h>
-#include "signal.h"
+#include <string.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <signal.h>
+#include <fcntl.h>
+#include <errno.h>
+
+/* Global variable */
 extern char **environ;
 
+/* Macros */
+#define BUFSIZE 256
+#define TOKENSIZE 64
+#define PRINT(c) (write(STDOUT_FILENO, c, _strlen(c)))
+#define PROMPT "$ "
+#define SUCCESS (1)
+#define FAIL (-1)
+#define NEUTRAL (0)
+
+/* Struct */
+
 /**
- * struct path - linked list of environment variables
- * @ptr: pointer to environment variable string
- * @next: points to next node in linked list
+ * struct sh_data - Global data structure
+ * @line: the line input
+ * @args: the arguments token
+ * @error_msg: the global path
+ * @cmd: the parsed command
+ * @index: the command index
+ * @oldpwd: the old path visited
+ * @env: the environnment
+ *
+ * Description: A structure contains all the variables needed to manage
+ * the program, memory and accessability
  */
-typedef struct path
+typedef struct sh_data
 {
-	char *ptr;
-	struct path *next;
-} path_t;
+	char *line;
+	char **args;
+	char *cmd;
+	char *error_msg;
+	char *oldpwd;
+	unsigned long int index;
+	char *env;
+} sh_t;
+/**
+ * struct builtin - Manage the builtin functions
+ * @cmd: the command line on string form
+ * @f: the associated function
+ *
+ * Description: this struct made to manage builtins cmd
+ */
+typedef struct builtin
+{
+	char *cmd;
+	int (*f)(sh_t *data);
+} blt_t;
+/* ----------Process prototype------------*/
+int read_line(sh_t *);
+int split_line(sh_t *);
+int parse_line(sh_t *);
+int process_cmd(sh_t *);
 
-/* entry point */
-int main(int argc, char **argv);
-
-/* input */
-void egg(char *snail);
-char *read_line(void);
-char **split_line(char *buffer, char *del);
-int execute_shell(char **args, char *snail);
-
-/* path functions */
-path_t *path_gen(void);
-char *path_check(path_t *head, char *input);
-char *path_cat(char *s1, char *s2);
-
-/* built in functions*/
-int isit_built(char **args, char *input);
-void shell_exit(char **args, char *input);
-void print_enviornment(void);
-
-/* enviornment funcitons */
-path_t *_env(void);
-char *env_find(char *var);
-int env_match(char *input);
-void env_start(char *str, char *value);
-
-/* string tokenize functions*/
-int ayto(char z, const char *delim);
-char *_strtok(char *input, const char *delim);
-char **split_line(char *buffer, char *delim);
-int word_count(char *str);
-
-/* execution */
-int cmp_exec(char **args, char *eggs);
-int fork_exec(char **args, char *snail);
-
-/* functions that free */
-void pth_free(path_t *head);
-void env_free(path_t *head);
-
-/* string functions */
-int _strlen(char *s);
-int _strcmp(char *s1, char *s2);
-char *_strcat(char *dest, char *src);
+/* ----------String prototype------------*/
 char *_strdup(char *str);
-char *_strcpy(char *dest, char *src);
-char *_strncpy(char *dest, char *src, int n);
-char *_itoa(int num);
-int _numlen(int n);
-char *_strcpy_src(char *dest, char *src, int n);
-void _puts(char *str);
-/* variables */
-path_t *the_path;
-path_t *enviornment;
-int line_count;
-void *_realloc(void *ptr, unsigned int before, unsigned int after);
-void errenous(char **args, char *cmd, int errno);
-void sig_handler(int sig_handler);
-/*ssize_t getline(char **lineptr, size_t *n, FILE *stream);*/
-int find_match(const char *s1, char *s2);
-char *_getenv(const char *name);
-char *getpath(void);
-#endif
+char *_strcat(char *first, char *second);
+int _strlen(char *str);
+char *_strchr(char *str, char c);
+int _strcmp(char *s1, char *s2);
+
+/* ----------More String prototype-------*/
+char *_strcpy(char *dest, char *source);
+
+/* ----------Memory prototype------------*/
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+char *_memset(char *s, char byt, unsigned int n);
+char *_memcpy(char *dest, char *src, unsigned int n);
+int free_data(sh_t *);
+
+/* ----------Tools prototype-------------*/
+void *fill_an_array(void *a, int el, unsigned int len);
+void signal_handler(int signo);
+char *_getenv(char *path_name);
+void index_cmd(sh_t *data);
+void array_rev(char *arr, int len);
+
+/* ----------More tools prototype--------*/
+char *_itoa(unsigned int n);
+int intlen(int num);
+int _atoi(char *c);
+int print_error(sh_t *data);
+int write_history(sh_t *data);
+int _isalpha(int c);
+
+/* -------------Builtins-----------------*/
+int abort_prg(sh_t *data);
+int change_dir(sh_t *data);
+int display_help(sh_t *data);
+int handle_builtin(sh_t *data);
+int check_builtin(sh_t *data);
+
+/* -------------Parse-----------------*/
+int is_path_form(sh_t *data);
+void is_short_form(sh_t *data);
+int is_builtin(sh_t *data);
+
+#endif /* SHELL_H */
