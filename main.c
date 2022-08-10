@@ -118,7 +118,7 @@ int main(int argc, char *argv[])
 	{
 		write(STDOUT_FILENO, prompt, 2);
 		ret = handle_args(exe_ret);
-[O		if (ret == END_OF_FILE || ret == EXIT)
+		if (ret == END_OF_FILE || ret == EXIT)
 		{
 			if (ret == END_OF_FILE)
 				write(STDOUT_FILENO, new_line, 1);
